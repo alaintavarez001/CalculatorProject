@@ -7,44 +7,61 @@
     
     </head>
     
-    <body>
+    <body background="img/mathslide.jpg">
         <div id="calculator">
             <table align="center">
-                <tr>
-                    <td colspan="4"><input type="text" id="numberField"><br></td> 
+                <tr class="inputField">
+                    <td colspan="4"><div id="numberField"></div><br></td> 
                 </tr>
                 <tr>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="7"><h1>7</h1></button></td>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="8" ><h1>8</h1></button></td> 
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="9"><h1>9</h1></button></td> 
-                    <td><button class="eqtbtn" type="button" onclick="" id="/"><h1>/</h1></button></td> 
+                    <td><button class="nbrbtn" type="button" xid="7">7</button></td>
+                    <td><button class="nbrbtn" type="button" xid="8" >8</button></td> 
+                    <td><button class="nbrbtn" type="button" xid="9">9</button></td> 
+                    <td><button class="oprbtn" type="button" xid="/">/</button></td> 
                 </tr>
                 <tr>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="4"><h1>4</h1></button></td>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="5"><h1>5</h1></button></td> 
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="6"><h1>6</h1></button></td> 
-                    <td><button class="eqtbtn" type="button" onclick="" id="*"><h1>*</h1></button></td>  
+                    <td><button class="nbrbtn" type="button" xid="4">4</button></td>
+                    <td><button class="nbrbtn" type="button" xid="5">5</button></td> 
+                    <td><button class="nbrbtn" type="button" xid="6">6</button></td> 
+                    <td><button class="oprbtn" type="button" xid="*">*</button></td>  
                 </tr>
                 <tr>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="1"><h1>1</h1></button></td>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="2"><h1>2</h1></button></td> 
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="3"><h1>3</h1></button></td> 
-                    <td><button class="eqtbtn" type="button" onclick="" id="-"><h1>-</h1></button></td>    
+                    <td><button class="nbrbtn" type="button" xid="1">1</button></td>
+                    <td><button class="nbrbtn" type="button" xid="2">2</button></td> 
+                    <td><button class="nbrbtn" type="button" xid="3">3</button></td> 
+                    <td><button class="oprbtn" type="button" xid="-">-</button></td>    
                 </tr>
                 <tr>
-                    <td><button class="zrobtn" type="button" onclick="" id="C"><h1>C</h1></button></td>
-                    <td><button class="nbrbtn" type="button" onclick="numberLog()" id="0"><h1>0</h1></button></td> 
-                    <td><button class="eqlbtn" type="button" onclick="numberLog()" id="="><h1>=</h1></button></td> 
-                    <td><button class="eqtbtn" type="button" onclick="" id="+"><h1>+</h1></button></td>    
+                    <td><button class="clrbtn" type="button" xid="C">C</button></td>
+                    <td><button class="nbrbtn" type="button" xid="0">0</button></td> 
+                    <td><button class="eqlbtn" type="button" xid="=">=</button></td> 
+                    <td><button class="oprbtn" type="button" xid="+">+</button></td>    
                 </tr>
                 
             </table>
             
         </div>
         
-        
-        
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            $(".nbrbtn").on("click",function(){
+              var numberClicked=$(this).attr("xid");
+                if($("#numberField").html().length<11)
+                    $("#numberField").append(numberClicked);
+            });
+            $(".clrbtn").on("click",function(){
+                $("#numberField").html("");
+            })
+            $(".oprbtn").on("click",function(){
+                var operation=$(this).attr("xid");
+                 $("#numberField").append(operation);
+            })
+            $(".eqlbtn").on("click",function(){
+                var result=eval($("#numberField").html());
+                 $("#numberField").html(result);
+            })
+        </script>
     
     </body>
     

@@ -45,6 +45,11 @@
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="js/main.js"></script>
         <script>
+            
+            var firstNumbers;
+            var operation;
+            var secondNumbers;
+            
             $(".nbrbtn").on("click",function(){
               var numberClicked=$(this).attr("xid");
                 if($("#numberField").html().length<11)
@@ -54,11 +59,13 @@
                 $("#numberField").html("");
             })
             $(".oprbtn").on("click",function(){
-                var operation=$(this).attr("xid");
-                 $("#numberField").append(operation);
+                operation=$(this).attr("xid");
+                  firstNumbers=$("#numberField").html();
+                 $("#numberField").html("");
             })
             $(".eqlbtn").on("click",function(){
-                var result=eval($("#numberField").html());
+                secondNumbers=$("#numberField").html();
+                var result=eval(firstNumbers+operation+secondNumbers);
                  $("#numberField").html(result);
             })
         </script>
